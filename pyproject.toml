@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Geostatistics"
+version = "0.0.1"
+authors = [
+  { name="Kristian Fossum", email="krfo@norceresearch.no" },
+]
+description = "A package containing some geostatistical tools that can be used by the Python Ensemble Toolbox."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+dependencies = [
+  "numpy",
+  "scipy"
+  ]
+
+[project.urls]
+Homepage = "https://github.com/Python-Ensemble-Toolbox/Geostatistics"
+Issues = "https://github.com/Python-Ensemble-Toolbox/Geostatistics/ issues"
