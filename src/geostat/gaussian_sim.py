@@ -111,15 +111,15 @@ def fast_gaussian(dimension, sdev, corr, num_samples=1):
         t3 = np.exp(-t3 ** 2) + 1e-10 * np.eye(p)
         cholt3 = np.linalg.cholesky(t3)
 
-    z = np.random.randn(dim, num_samples)
+    x = np.random.randn(dim, num_samples)
 
     # Memory-efficient multiplication without explicit large Kronecker product
     if p is None:
-        x = z.reshape(m, n, num_samples, order='F')
+        x = x.reshape(m, n, num_samples, order='F')
         x = np.tensordot(cholt1, x, axes=([1], [0]))
         x = np.tensordot(cholt2, x, axes=([1], [1]))
     else:
-        x = z.reshape(m, n, p, num_samples, order='F')
+        x = x.reshape(m, n, p, num_samples, order='F')
         if n <= p:
             x = np.tensordot(cholt1, x, axes=([1], [0]))
             x = np.tensordot(cholt2, x, axes=([1], [1]))
