@@ -120,14 +120,9 @@ def fast_gaussian(dimension, sdev, corr, num_samples=1):
         x = np.tensordot(cholt2, x, axes=([1], [1]))
     else:
         x = x.reshape(m, n, p, num_samples, order='F')
-        if n <= p:
-            x = np.tensordot(cholt1, x, axes=([1], [0]))
-            x = np.tensordot(cholt2, x, axes=([1], [1]))
-            x = np.tensordot(cholt3, x, axes=([1], [2]))
-        else:
-            x = np.tensordot(cholt1, x, axes=([1], [0]))
-            x = np.tensordot(cholt2, x, axes=([1], [1]))
-            x = np.tensordot(cholt3, x, axes=([1], [2]))
+        x = np.tensordot(cholt1, x, axes=([1], [0]))
+        x = np.tensordot(cholt2, x, axes=([1], [1]))
+        x = np.tensordot(cholt3, x, axes=([1], [2]))
 
     # Reshape back to (dim, num_samples) (order='C' is used here to match the original function's output)
     x = x.reshape((dim, num_samples), order='C')
